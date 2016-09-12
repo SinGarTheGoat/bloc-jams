@@ -41,7 +41,7 @@ html {
     
 }
 
-.links-container .nacbar-link{
+.links-container .navbar-link{
     display: table-cell;
     position: relative;
     height: 100%;
@@ -60,6 +60,10 @@ html {
  .links-container .navbar-link:hover {
      color: rgb(233,50,117);
  }
+
+.links-container .navbar-link:active{
+    background-color: white;
+}
 
  .container {
      margin: 0 auto;
