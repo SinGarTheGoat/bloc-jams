@@ -55,6 +55,7 @@ html {
     text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
+    
 }
 
  .links-container .navbar-link:hover {
@@ -67,6 +68,10 @@ html {
  .container {
      margin: 0 auto;
      max-width: 64rem;
+ }
+
+ .container.narrow {
+     max-width: 56rem;
  }
 
 
