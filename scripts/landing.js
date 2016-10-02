@@ -6,7 +6,7 @@ forEach(points, animatePoints);
  var animatePoints = function(points) {
 
     var revealPoint = function(points){
-        (i=0;i<points.length;i++){
+        for (i=0;i<points.length;i++){
          points.style.opacity = 1;
          points.style.transform = "scaleX(1) translateY(0)";
          points.style.msTransform = "scaleX(1) translateY(0)";
