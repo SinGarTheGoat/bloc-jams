@@ -89,7 +89,7 @@ var koolKidsKounter = 0;
      setCurrentAlbum(albumPicasso);
      document.getElementById("albumImage").addEventListener('click', function() {
             koolKidsKounter++;
-         if (koolKidsKounter>3){
+         if (koolKidsKounter>koolKids.length){
             koolKidsKounter= 0;
          }
          setCurrentAlbum(koolKids[koolKidsKounter]);
