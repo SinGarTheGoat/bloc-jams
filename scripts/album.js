@@ -130,9 +130,6 @@ var koolKids = [albumPicasso, albumMarconi, albumZevon]
 var koolKidsKounter = 0;
 
 
-var songListContainer = document.getElementsByClassName('album-view-song-list')[0];
-var songRows = document.getElementsByClassName('album-view-song-item');
- // Album button templates
  var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
  var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>';
 
@@ -142,13 +139,6 @@ var songRows = document.getElementsByClassName('album-view-song-item');
 
   $(document).ready(function() {
      setCurrentAlbum(albumPicasso);
-     
-     for (var i = 0; i < songRows.length; i++) {
-
-           songRows[i].addEventListener('click', function(event) {
-              clickHandler(event.target);
-         });
-     }
    });
      
      document.getElementById("albumImage").addEventListener('click', function() {
@@ -158,5 +148,3 @@ var songRows = document.getElementsByClassName('album-view-song-item');
          }
          setCurrentAlbum(koolKids[koolKidsKounter]);
      });
-
-
