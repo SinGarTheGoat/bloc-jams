@@ -1,3 +1,9 @@
+var setSong = function(songNumber){
+    currentlyPlayingSongNumber = parseInt(songNumber)
+    currentSongFromAlbum = currentAlbum.songs[songNumber-1];
+};
+
+
 var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -25,15 +31,27 @@ var createSongRow = function(songNumber, songName, songLength) {
     if (currentlyPlayingSongNumber !== songNumber) {
          // Switch from Play -> Pause button to indicate new song is playing.
          $(this).html(pauseButtonTemplate);
-        currentlyPlayingSongNumber = songNumber;
-        currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
+
+
+
+        //replaced these 2 lines 
+//        currentlyPlayingSongNumber = songNumber;
+//        currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
+          setSong(songNumber);
+
+
+
         updatePlayerBarSong();
     } else if (currentlyPlayingSongNumber === songNumber) {
          // Switch from Pause -> Play button to pause currently playing song.
          $(this).html(playButtonTemplate);
         $('.main-controls .play-pause').html(playerBarPlayButton);
-        currentlyPlayingSongNumber = null;
-        currentSongFromAlbum = null;
+        
+
+//chapter 32 part 1
+        //currentlyPlayingSongNumber = null;
+        //currentSongFromAlbum = null;
+          setSong(songNumber);
      }
 
  };
@@ -113,9 +131,17 @@ var nextSong = function() {
     }
     
     // Set a new current song
+
+
+
+//THIS ONE BREAKS THE FORWARD FUNCtiON 
     currentlyPlayingSongNumber = currentSongIndex + 1;
     currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
-
+    //setSong(songNumber);
+    
+    
+    
+    
     // Update the Player Bar information
     $('.currently-playing .song-name').text(currentSongFromAlbum.title);
     $('.currently-playing .artist-name').text(currentAlbum.artist);
@@ -148,8 +174,15 @@ var previousSong = function() {
     }
     
     // Set a new current song
+
+
+
     currentlyPlayingSongNumber = currentSongIndex + 1;
     currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
+   // setSong(songNumber);
+
+
+
 
     // Update the Player Bar information
     $('.currently-playing .song-name').text(currentSongFromAlbum.title);
@@ -193,8 +226,15 @@ var songRows = document.getElementsByClassName('album-view-song-item');
 
  // Store state of playing songs
  var currentAlbum = null;
+
+
+
  var currentlyPlayingSongNumber = null;
  var currentSongFromAlbum = null;
+//setSong(songNumber);
+
+
+
 
  var $previousButton = $('.main-controls .previous');
  var $nextButton = $('.main-controls .next');
