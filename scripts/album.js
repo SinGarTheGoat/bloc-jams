@@ -2,7 +2,9 @@ var setSong = function(songNumber){
     currentlyPlayingSongNumber = parseInt(songNumber)
     currentSongFromAlbum = currentAlbum.songs[songNumber-1];
 };
-
+var getSongNumberCell = function(number){
+return $('.song-item-number[data-song-number="' + number + '"]');
+};
 
 var createSongRow = function(songNumber, songName, songLength) {
      var template =
@@ -24,7 +26,7 @@ var createSongRow = function(songNumber, songName, songLength) {
           
               if (currentlyPlayingSongNumber !== null) {
          // Revert to song number for currently playing song because user started playing new song.
-             var currentlyPlayingCell = $('.song-item-number[data-song-number="' + currentlyPlayingSongNumber + '"]');
+             var currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
              currentlyPlayingCell.html(currentlyPlayingSongNumber);
      }
 
@@ -149,8 +151,8 @@ var nextSong = function() {
     $('.main-controls .play-pause').html(playerBarPauseButton);
     
     var lastSongNumber = getLastSongNumber(currentSongIndex);
-    var $nextSongNumberCell = $('.song-item-number[data-song-number="' + currentlyPlayingSongNumber + '"]');
-    var $lastSongNumberCell = $('.song-item-number[data-song-number="' + lastSongNumber + '"]');
+    var $nextSongNumberCell = getLastSongNumber(currentlyPlayingSongNumber);
+    var $lastSongNumberCell = $('.song-item-number[data-song-number="' + lastSongNumber + '"]');// I dont think I change this one 32 part 2
     
     $nextSongNumberCell.html(pauseButtonTemplate);
     $lastSongNumberCell.html(lastSongNumber);
@@ -191,8 +193,8 @@ var previousSong = function() {
     $('.main-controls .play-pause').html(playerBarPauseButton);
     
     var lastSongNumber = getLastSongNumber(currentSongIndex);
-    var $previousSongNumberCell = $('.song-item-number[data-song-number="' + currentlyPlayingSongNumber + '"]');
-    var $lastSongNumberCell = $('.song-item-number[data-song-number="' + lastSongNumber + '"]');
+    var $previousSongNumberCell = getLastSongNumber(currentlyPlayingSongNumber);
+    var $lastSongNumberCell = $('.song-item-number[data-song-number="' + lastSongNumber + '"]');// I dont think I change this one.
     
     $previousSongNumberCell.html(pauseButtonTemplate);
     $lastSongNumberCell.html(lastSongNumber);
@@ -228,10 +230,10 @@ var songRows = document.getElementsByClassName('album-view-song-item');
  var currentAlbum = null;
 
 
-
- //var currentlyPlayingSongNumber = null;
- //var currentSongFromAlbum = null;
-setSong(songNumber);
+//This one also breaks the damn thing
+ var currentlyPlayingSongNumber = null;
+ var currentSongFromAlbum = null;
+//setSong(songNumber);
 
 
 
