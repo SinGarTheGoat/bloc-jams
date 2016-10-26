@@ -229,9 +229,9 @@ var songRows = document.getElementsByClassName('album-view-song-item');
 
 
 
- var currentlyPlayingSongNumber = null;
- var currentSongFromAlbum = null;
-//setSong(songNumber);
+ //var currentlyPlayingSongNumber = null;
+ //var currentSongFromAlbum = null;
+setSong(songNumber);
 
 
 
