@@ -1,3 +1,11 @@
+var setSong = function(songNumber){
+    currentlyPlayingSongNumber= parseInt(songNumber);
+    currentSongFromAlbum = currentAlbum.songs[songNumber-1];
+
+};
+
+
+
 var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -25,13 +33,17 @@ var createSongRow = function(songNumber, songName, songLength) {
     if (currentlyPlayingSongNumber !== songNumber) {
          // Switch from Play -> Pause button to indicate new song is playing.
          $(this).html(pauseButtonTemplate);
-        currentlyPlayingSongNumber = songNumber;
+    //chapter 32 1st part
+        setSong(songNumber);
         currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
         updatePlayerBarSong();
     } else if (currentlyPlayingSongNumber === songNumber) {
          // Switch from Pause -> Play button to pause currently playing song.
          $(this).html(playButtonTemplate);
         $('.main-controls .play-pause').html(playerBarPlayButton);
+        
+
+    //Am I supposed to change these? 32 first part
         currentlyPlayingSongNumber = null;
         currentSongFromAlbum = null;
      }
@@ -113,7 +125,8 @@ var nextSong = function() {
     }
     
     // Set a new current song
-    currentlyPlayingSongNumber = currentSongIndex + 1;
+//Chapter 32 first part
+    setSong(songNumber);
     currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
 
     // Update the Player Bar information
@@ -148,7 +161,7 @@ var previousSong = function() {
     }
     
     // Set a new current song
-    currentlyPlayingSongNumber = currentSongIndex + 1;
+    setSong(songNumber);// chapter 32 first part
     currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
 
     // Update the Player Bar information
@@ -193,6 +206,8 @@ var songRows = document.getElementsByClassName('album-view-song-item');
 
  // Store state of playing songs
  var currentAlbum = null;
+
+//am I supposed to change this chapter 32 first part
  var currentlyPlayingSongNumber = null;
  var currentSongFromAlbum = null;
 
