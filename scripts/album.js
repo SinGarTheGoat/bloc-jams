@@ -290,13 +290,21 @@ var currentVolume = 80;
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
 
+//33 HW
+var $playPauseButton = $('.main-controls .play-pause')
+
 $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
 
     $previousButton.click(previousSong);
     $nextButton.click(nextSong);
-
-
+    
+    //33 HW
+    $playPauseButton.click(//togglePlayFromPlayerBar()
+        function(){
+        alert("You totes just just hit the play or pause button")}
+)
+    
 
     for (var i = 0; i < songRows.length; i++) {
 
@@ -305,6 +313,9 @@ $(document).ready(function() {
         });
     }
 });
+
+//var togglePlayFromPlayerBar(){
+//};
 
 document.getElementById("albumImage").addEventListener('click', function() {
     koolKidsKounter++;
