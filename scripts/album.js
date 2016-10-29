@@ -177,10 +177,10 @@ var nextSong = function() {
     // Set a new current song
      // ch32 part 1 change 3  
     //changing these lines breaks the next button on the player bar
-    currentlyPlayingSongNumber = currentSongIndex + 1;
-    currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
-    //setSong(currentSongIndex + 1);
-    //setSong(currentAlbum.songs[currentSongIndex]);
+//    currentlyPlayingSongNumber = currentSongIndex + 1;
+//    currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
+    setSong(currentSongIndex + 1);
+//    setSong(currentAlbum.songs[currentSongIndex]);
 
 
 
