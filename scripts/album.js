@@ -298,12 +298,22 @@ $(document).ready(function() {
 
     $previousButton.click(previousSong);
     $nextButton.click(nextSong);
-    
+    //
+    var togglePlayFromPlayerBar = function(){
+        if (currentSoundFile.isPaused()) {
+            $(this).html(pauseButtonTemplate);
+            $('.main-controls .play-pause').html(playerBarPauseButton);
+            currentSoundFile.play();
+        } else {
+            $(this).html(playButtonTemplate);
+            $('.main-controls .play-pause').html(playerBarPlayButton);
+            currentSoundFile.pause();   
+        }
+    };
+
     //33 HW
-    $playPauseButton.click(//togglePlayFromPlayerBar()
-        function(){
-        alert("You totes just just hit the play or pause button")}
-)
+    $playPauseButton.click(togglePlayFromPlayerBar);
+
     
 
     for (var i = 0; i < songRows.length; i++) {
@@ -313,9 +323,6 @@ $(document).ready(function() {
         });
     }
 });
-
-//var togglePlayFromPlayerBar(){
-//};
 
 document.getElementById("albumImage").addEventListener('click', function() {
     koolKidsKounter++;
