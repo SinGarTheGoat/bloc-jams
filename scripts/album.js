@@ -85,6 +85,7 @@ var createSongRow = function(songNumber, songName, songLength) {
 
             //33
             currentSoundFile.play();
+            updateSeekBarWhileSongPlays()
             $(this).html(pauseButtonTemplate);
             currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
 
@@ -102,7 +103,7 @@ var createSongRow = function(songNumber, songName, songLength) {
             //            setSong(null)
 
 
-
+           
             if (currentSoundFile.isPaused()) {
                 $(this).html(pauseButtonTemplate);
                 $('.main-controls .play-pause').html(playerBarPauseButton);
@@ -149,6 +150,19 @@ var createSongRow = function(songNumber, songName, songLength) {
     $row.hover(onHover, offHover);
     // #3
     return $row;
+
+
+    for (var i = 0; i < songRows.length; i++) {
+
+        songRows[i].addEventListener('click', function(event) {
+            clickHandler(event.target);
+        });
+    }
+
+
+
+
+
 };
 
 var setCurrentAlbum = function(album) {
@@ -184,6 +198,9 @@ var updateSeekBarWhileSongPlays = function() {
             var $seekBar = $('.seek-control .seek-bar');
 
             updateSeekPercentage($seekBar, seekBarFillRatio);
+
+            //Home work 34
+            setCurrentTimeInPlayerBar(filterTimeCode(this.getTime()))
         });
     }
 };
@@ -296,6 +313,7 @@ var nextSong = function() {
 
 
     currentSoundFile.play();
+    updateSeekBarWhileSongPlays()
     // Update the Player Bar information
     $('.currently-playing .song-name').text(currentSongFromAlbum.title);
     $('.currently-playing .artist-name').text(currentAlbum.artist);
@@ -311,7 +329,6 @@ var nextSong = function() {
     //var $lastSongNumberCell = $('.song-item-number[data-song-number="' + lastSongNumber + '"]');
     var $nextSongNumberCell = getSongNumberCell(currentlyPlayingSongNumber);
     var $lastSongNumberCell = getSongNumberCell(lastSongNumber);
-
 
 
     $nextSongNumberCell.html(pauseButtonTemplate);
@@ -345,6 +362,7 @@ var previousSong = function() {
 
 
     currentSoundFile.play();
+    updateSeekBarWhileSongPlays()
 
     // Update the Player Bar information
     $('.currently-playing .song-name').text(currentSongFromAlbum.title);
@@ -372,6 +390,13 @@ var updatePlayerBarSong = function() {
 
     $('.main-controls .play-pause').html(playerBarPauseButton);
 
+
+     
+    //HW 34
+//    var mySound = currentSoundFile; 
+//    var timerYo = buzz.toTimer(mySound.getDuration());
+//    setTotalTimeInPlayerBar(timerYo);
+    setTotalTimeInPlayerBar(currentSongFromAlbum.duration);
 };
 
 
@@ -430,12 +455,12 @@ $(document).ready(function() {
 
 
 
-    for (var i = 0; i < songRows.length; i++) {
-
-        songRows[i].addEventListener('click', function(event) {
-            clickHandler(event.target);
-        });
-    }
+//    for (var i = 0; i < songRows.length; i++) {
+//
+//        songRows[i].addEventListener('click', function(event) {
+//            clickHandler(event.target);
+//        });
+//    }
 });
 
 document.getElementById("albumImage").addEventListener('click', function() {
@@ -445,3 +470,42 @@ document.getElementById("albumImage").addEventListener('click', function() {
     }
     setCurrentAlbum(koolKids[koolKidsKounter]);
 });
+
+
+//Home work 34
+var setCurrentTimeInPlayerBar = function(currentTime){
+    
+   // var timerBro = buzz.toTimer(currentTime.getTime());
+
+
+    var $currentTime = $(".current-time");
+    $currentTime.text(currentTime);
+}
+
+//Sucess!!!
+var setTotalTimeInPlayerBar= function(totalTime){
+    debugger
+    var $totalTime = $(".total-time");
+    $totalTime.html(totalTime);
+}
+
+var filterTimeCode = function(timeInSeconds){
+    
+    var minutes = parseInt( timeInSeconds / 60 ) % 60;
+    var seconds = Math.round(timeInSeconds % 60);
+    
+    var result = minutes + ":" + seconds
+    
+    return result
+
+}
+
+
+
+//var timer = buzz.toTimer(mySound.getTime()); // 01:30
+
+
+
+
+
+
