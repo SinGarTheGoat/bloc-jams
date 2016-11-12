@@ -15,21 +15,14 @@
    + '  </div>'
    + '</div>'
    ;
-
           return $(template);
  };
 
  $(window).load(function() {
-      // #3
      var $collectionContainer = $('.album-covers');
-// #4
      $collectionContainer.empty();
-
- 
-     // #3
      for (var i = 0; i < 12; i++) {
         var $newThumbnail = buildCollectionItemTemplate();
-         // #5
          $collectionContainer.append($newThumbnail);
      }
 });
